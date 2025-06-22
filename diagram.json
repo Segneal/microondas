@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "author": "Uri Shaked + Nicolás",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": 285, "left": 137.2, "attrs": {} },
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 39, "left": -240.6, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd",
+      "top": 352,
+      "left": -215.2,
+      "attrs": { "pins": "i2c" }
+    },
+    { "type": "wokwi-membrane-keypad", "id": "keypad1", "top": -338, "left": -215.2, "attrs": {} },
+    { "type": "wokwi-slide-switch", "id": "sw1", "top": 196.4, "left": 223.9, "attrs": {} },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -7.2,
+      "left": 270.6,
+      "attrs": { "volume": "0.1" }
+    },
+    {
+      "type": "wokwi-led-ring",
+      "id": "ring1",
+      "top": 67.84,
+      "left": 346.79,
+      "attrs": { "pixels": "16" }
+    },
+    {
+      "type": "wokwi-rgb-led",
+      "id": "rgb1",
+      "top": 120,
+      "left": 159.3,
+      "rotate": 90,
+      "attrs": { "common": "cathode" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 71.15,
+      "left": 67.2,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 81.05,
+      "left": 190.6,
+      "rotate": 180,
+      "attrs": { "value": "1500" }
+    }
+  ],
+  "connections": [
+    [ "uno:5V", "bb1:tp.1", "red", [ "v0" ] ],
+    [ "uno:GND.2", "bb1:tn.1", "black", [ "v0" ] ],
+    [ "bb1:tp.24", "bb1:29t.a", "red", [ "v0" ] ],
+    [ "bb1:tp.25", "bb1:30t.a", "black", [ "v0" ] ],
+    [ "lcd:SDA", "uno:A4.2", "green", [ "v-105.4", "h67.6" ] ],
+    [ "uno:A5.2", "lcd:SCL", "green", [ "v240", "h-76.8", "v124.5" ] ],
+    [ "bb1:tn.2", "bb1:3t.a", "black", [ "v0" ] ],
+    [ "lcd:GND", "bb1:3t.b", "black", [ "v-48", "h393.6" ] ],
+    [ "lcd:VCC", "bb1:4t.c", "red", [ "v-47.9", "h403.2" ] ],
+    [ "bb1:tn.1", "bb1:2t.a", "black", [ "v0" ] ],
+    [ "bb1:tp.3", "bb1:4t.a", "red", [ "v0" ] ],
+    [ "bb1:tp.6", "sw1:1", "red", [ "v0" ] ],
+    [ "bb1:tn.8", "sw1:3", "black", [ "v0" ] ],
+    [ "sw1:2", "uno:A1", "violet", [ "v9.6", "h-259.1" ] ],
+    [ "bz1:1", "bb1:tn.13", "black", [ "v0" ] ],
+    [ "keypad1:R1", "uno:13", "green", [ "v0" ] ],
+    [ "keypad1:R2", "uno:12", "green", [ "v0" ] ],
+    [ "keypad1:R3", "uno:11", "green", [ "v0" ] ],
+    [ "keypad1:R4", "uno:10", "green", [ "v0" ] ],
+    [ "keypad1:C1", "uno:9", "white", [ "v0" ] ],
+    [ "keypad1:C2", "uno:8", "white", [ "v0" ] ],
+    [ "keypad1:C3", "uno:7", "white", [ "v0" ] ],
+    [ "keypad1:C4", "uno:6", "white", [ "v0" ] ],
+    [ "ring1:GND", "bb1:tn.21", "black", [ "v0" ] ],
+    [ "ring1:VCC", "bb1:tp.22", "red", [ "v0" ] ],
+    [ "rgb1:COM", "bb1:tn.4", "black", [ "h-18.8", "v38", "h56" ] ],
+    [ "r1:2", "rgb1:R", "purple", [ "h18", "v67.2" ] ],
+    [ "rgb1:G", "r1:2", "purple", [ "h-19.2", "v-85.1" ] ],
+    [ "rgb1:B", "r1:2", "purple", [ "h-9.6", "v-94.4" ] ],
+    [ "r1:1", "uno:4", "purple", [ "v-76.8", "h-90.3" ] ],
+    [ "ring1:DIN", "uno:A5", "orange", [ "v28.8", "h-412.8" ] ],
+    [ "r2:1", "bz1:2", "green", [ "h0" ] ],
+    [ "uno:2", "r2:2", "green", [ "v-38.4", "h186.5", "v19.2" ] ]
+  ],
+  "dependencies": {}
+}
